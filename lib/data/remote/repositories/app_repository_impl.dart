@@ -5,12 +5,12 @@ import 'package:mvvm_getx/data/remote/models/model.dart';
 import 'package:mvvm_getx/domain/repositories/app_respository.dart';
 
 class AppRepositoryImpl implements AppRepository {
-  final BaseApiService _apiService = NetworkApiService();
+  BaseApiService apiService = NetworkApiService();
 
   @override
   Future<List<Model>> getData() async {
     try {
-      dynamic response = await _apiService.getResponse(Constants.POSTS);
+      dynamic response = await apiService.getResponse(Constants.POSTS);
 
       if (response is List) {
         List<Model> jsonData =
