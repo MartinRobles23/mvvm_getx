@@ -78,7 +78,7 @@ Padding buildResponseError(ViewModel viewModel) {
         Align(
             alignment: Alignment.center,
             child: Text(
-                'Ops, an error occurred. ${viewModel.baseResponse.value.message}')),
+                'Ops, an error occurred. ${viewModel.baseResponse.value.error}')),
         ElevatedButton(
             onPressed: () {
               viewModel.getData();
