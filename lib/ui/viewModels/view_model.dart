@@ -10,7 +10,9 @@ import 'package:mvvm_getx/data/response/reponse_v2.dart';
 import '../../data/remote/models/model.dart';
 
 class ViewModel extends GetxController {
-  final _repo = AppRepositoryImpl();
+  AppRepositoryImpl repo;
+
+  ViewModel(this.repo);
 
   Rx<ResponseV2<List<Model>>> baseResponse =
       ResponseV2<List<Model>>.loading().obs;
@@ -19,7 +21,7 @@ class ViewModel extends GetxController {
     _setData(ResponseV2.loading());
 
     try {
-      final data = await _repo.getData();
+      final data = await repo.getData();
       _setData(ResponseV2.success(data));
     } on SocketException {
       _setData(ResponseV2.failure(Exception('No Internet Connection')));
